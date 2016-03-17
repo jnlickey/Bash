@@ -1,4 +1,5 @@
 #!/bin/bash
+# Created by nlickey 20160317
 
 IN=$(getent group | awk '/docker_group/' | cut -d ":" -f 4)
 
