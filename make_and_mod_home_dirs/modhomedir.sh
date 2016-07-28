@@ -5,7 +5,7 @@
 # Created by: nlickey
 # 05/28/2015
 if [ -e /export/$2/$1 ]; then
-        chown -R $1:cse_users /export/$2/$1
+        chown -R $1:group_name /export/$2/$1
         chmod 711 /export/$2/$1
         chmod 711 /export/$2/$1/.linux
         chmod 711 /export/$2/$1/public_html
