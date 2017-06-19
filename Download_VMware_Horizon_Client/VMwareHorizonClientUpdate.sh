@@ -27,7 +27,7 @@ progressfilt ()
 
 year=$(date +"%y")
 month=$(date +"%m")
-fexists=$(ls /home/$USER/Desktop | grep VMware-Horizon-Client)
+fexists=$(ls | grep VMware-Horizon-Client)
 
 case $month in
 01|02|03)
