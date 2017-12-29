@@ -1,4 +1,8 @@
 #!/bin/bash
+# Sets up Centos7 after a fresh install
+#
+# Created by: J.Lickey
+#
 progressfilt ()
 {
     local flag=false c count cr=$'\r' nl=$'\n'
