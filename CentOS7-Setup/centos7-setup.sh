@@ -31,7 +31,10 @@ function build_start-eth0 () {
 	echo "/etc/sysconfig/network-scripts/ifup-wireless" >> /etc/rc3.d/start-eth0.sh
 	chmod +x /etc/rc3.d/start-eth0.sh
 }
-
+function build_Pool_16-active () {
+	echo "#!/bin/bash" > /home/$USER/Desktop/Pool_16-active.sh
+	echo "xdotool search Pool_16 click 1" >> /home/$USER/Desktop/Pool_16-active.sh
+}
 build_start-eth0
 yum install epel-release -y 
 yum check-update -y
@@ -51,6 +54,7 @@ if [ "OS_bits" == "i686" ];then
 fi
 
 yum install xdotool wget mlocate tigervnc gnome-disk-utility libpng12 nmap -y
+build_Pool_16-active
 updatedb
 yum groupinstall "X Window system" -y
 yum groupinstall "MATE Desktop" -y
