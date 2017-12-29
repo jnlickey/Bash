@@ -1,5 +1,9 @@
 #!/bin/bash
-
+# Script builds an expect script which will execute the controlling of the screen brightness.
+# The script is executed by running the name of the script file: ./brightness.sh <0-12>
+#
+# Created by: J.Lickey
+#
 if [[ $1 = "" || $1 = "-h" ]];then
 	echo "Usage: $0 <0-12>"
 	exit
