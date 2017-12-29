@@ -1,5 +1,6 @@
 #!/bin/bash
 # Sets up Centos7 after a fresh install
+# (NOTE: May need to update link to VMware Horizon Client prior to running!)
 #
 # Created by: J.Lickey
 #
