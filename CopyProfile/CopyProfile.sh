@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script will copy your .bashrc profile to remote servers
+# This script will copy your .bashrc profile to remote servers using Ansible
 #
 # Created by: J.Lickey
 #
