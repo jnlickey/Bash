@@ -36,6 +36,19 @@ function build_Pool_16-active () {
 	echo "#!/bin/bash" > /home/$USER/Desktop/Pool_16-active.sh
 	echo "xdotool search Pool_16 click 1" >> /home/$USER/Desktop/Pool_16-active.sh
 }
+function build_vmware-config () {
+	if [[ -f /etc/vmware/config ]];then
+		echo ".encoding = \"UTF-8\"" > /etc/vmware/config
+		echo "product.name = \"VMware Workstation\"" >> /etc/vmware/config
+		echo "viewusb.ExcludeFamily = \"bluetooth;imaging;mouse;keyboard;video\"" >> /etc/vmware/config
+		echo "viewusb.AllowSmartCard = \"True\"" >> /etc/vmware/config
+		echo "viewusb.IncludeVidPid = \"vid-076b_pid-3022\"" >> /etc/vmware/config
+		echo "viewusb.IncludeFamily = \"smart-card\"" >> /etc/vmware/config
+	else
+		mkdir /etc/vmware
+		touch /etc/vmware/config
+		build_vmware-config
+}
 build_start-eth0
 yum install epel-release -y 
 yum check-update -y
@@ -65,4 +78,5 @@ ln -s '/usr/lib/systemd/system/graphical.target' '/etc/systemd/system/default.ta
 #wget https://download3.vmware.com/software/view/viewclients/CART16Q4/VMware-Horizon-Client-4.3.0-4710754.x64.bundle
 wget --progress=bar:force https://download3.vmware.com/software/view/viewclients/CART17Q2/VMware-Horizon-Client-4.5.0-5650368.x64.bundle 2>&1 | progressfilt
 chmod +x VMware-Horizon-Client-4.3.0-4710754.x64.bundle
+build_vmware-config
 shutdown -r now
