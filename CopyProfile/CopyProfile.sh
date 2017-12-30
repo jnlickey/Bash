@@ -5,7 +5,8 @@
 # Created by: J.Lickey
 #
 if [[ $1 = "" || $1 = "-h" ]];then
-	printf "*** NOTE: Make sure that your .bashrc is setup on <ansible_server>. ***\n This script will copy <ansible_server>:/home/<e-id|c-id>/.bashrc to\nremote_server:/home/<e-id|c-id>/.bashrc\n"
+	printf "*** NOTE: Make sure that your .bashrc is setup on <ansible_server>. ***\n This script will copy /
+	<ansible_server>:/home/<e-id|c-id>/.bashrc to\nremote_server:/home/<e-id|c-id>/.bashrc\n"
 	echo ""
 	echo "Usage: $0 <e-idt|c-idt> -s [default:All|<servername>,<servername>]"
 	echo ""
