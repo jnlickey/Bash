@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+#  Created by: J.Lickey
+#  20181004
+#
 if [[ $1 = "-h" || $1 = "--help" || $1 = "" ]];then
 	echo "Usage: $0 [-a|-g] <userid>"
 	echo "  -a - remove userid from ALL groups"
