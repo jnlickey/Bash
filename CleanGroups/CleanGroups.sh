@@ -7,7 +7,7 @@ if [[ $1 = "-h" || $1 = "--help" || $1 = "" ]];then
 	echo "Usage: $0 [-a|-g] <userid>"
 	echo "  -a - remove userid from ALL groups"
 	echo "  -l - list groups userid is in"
-	echo "  -g - groups to remove userid from (group1,group2,...)"
+	echo "  -g - groups to remove userid from (-g group1,group2,...)"
 	echo "  -h - this help screen"
 	echo
 	exit
