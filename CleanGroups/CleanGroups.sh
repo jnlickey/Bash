@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+#  This script was created to clean up old users that still appear in /etc/group
 #  Created by: J.Lickey
 #  20181004
 #
