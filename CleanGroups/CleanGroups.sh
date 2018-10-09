@@ -5,10 +5,10 @@
 #  20181004
 #
 if [[ $1 = "-h" || $1 = "--help" || $1 = "" ]];then
-	echo "Usage: $0 [-l|-a|-g] <userid>"
+	echo "Usage: $0 [-l|-g|-a] <userid>"
 	echo "  -l - list groups userid is in"
-	echo "  -a - remove userid from ALL groups"
 	echo "  -g - groups to remove userid from (-g group or -g group1,group2,...)"
+	echo "  -a - remove userid from ALL groups"
 	echo "  -h - this help screen"
 	echo
 	exit
