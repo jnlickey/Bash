@@ -13,6 +13,9 @@
 # This script has been tested and verified to work on Ubuntu 20.04 LTS server. Although, it has some
 # of the needed requirements to work on older versions of Ubuntu, it has not been tested.
 #
+# You should add this script to a directory path of: /usr/local/scripts/<filename>
+# Default variables can be set in a file under: /usr/local/scripts/.env
+#
 # Created by: J.Lickey
 # Created: 2022/01/13
 # Modified: 2022/01/25
