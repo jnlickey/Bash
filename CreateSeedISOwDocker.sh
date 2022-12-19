@@ -104,8 +104,8 @@ function DOCKERINSTALL () {
             echo -ne "#!/bin/bash\n\n" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "OS=\$(grep -r VERSION_ID /etc/os-release | cut -d'=' -f2 | sed 's/\"//g')" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "if [[ \$OS =~ 20\. ]];then"
-            echo -ne "     #\n# Install packages for Docker\n#\n" >> ${HOME_DIR}/DockerInstall.sh
-            echo "sudo apt install apt-transport-https ca-certificates gnupg lsb-release -y" >> ${HOME_DIR}/DockerInstall.sh
+            echo -ne"     #\n# Install packages for Docker\n#\n" >> ${HOME_DIR}/DockerInstall.sh
+            echo "     sudo apt install apt-transport-https ca-certificates gnupg lsb-release -y" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "     \n#\n# Install Docker\n#\n" >> ${HOME_DIR}/DockerInstall.sh
             echo "     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg" >> ${HOME_DIR}/DockerInstall.sh
             echo '     sudo echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null' >> ${HOME_DIR}/DockerInstall.sh
@@ -120,11 +120,12 @@ function DOCKERINSTALL () {
             echo "     sudo usermod -aG docker ansible" >> ${HOME_DIR}/DockerInstall.sh
             echo "     sudo newgrp docker" >> ${HOME_DIR}/DockerInstall.sh
             echo "fi" >> ${HOME_DIR}/DockerInstall.sh
+            echo -ne "\n" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "\n#\n# Install Docker Compose (From Binary)\n#\n" >> ${HOME_DIR}/DockerInstall.sh
             echo "sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-\$(uname -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
             #echo "sudo curl -L \"https://github.com/docker/compose/releases/download/2.11.2/docker-compose-\$(uname -s)-\$(uname -m)\" -o /usr/local/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
-            echo "     sudo chmod +x /usr/local/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
-            echo "     sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
+            echo "sudo chmod +x /usr/local/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
+            echo "sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "\n#\n# Once you have docker and docker-compose installed, you can make a directory\n#\n" >> ${HOME_DIR}/DockerInstall.sh
             echo "sudo mkdir /docker-services && sudo chmod 777 /docker-services" >> ${HOME_DIR}/DockerInstall.sh
             echo -ne "\n#\n# After that you can make a directory in there named the same\n# as the appliation that will be running:\n#\n" >> ${HOME_DIR}/DockerInstall.sh
@@ -466,7 +467,7 @@ if [[ ${ANS} =~ [Y|y][E|e][S|s]|[Y|y] ]];then
 		printf "# OS Version\n" >> /home/${USER}/www/seed.env
         printf "export OS=\"22.04\"\n" >> /home/${USER}/www/seed.env
 		printf "# Set domain name needs to end with a period, and multiple comma seperated (ad1.example.com.,ad2.example.com.)\n" >> /home/${USER}/www/seed.env
-        printf "export DOMAIN=\"ad.cll.cloud.,cll.cloud.\"\n" >> /home/${USER}/www/seed.env
+        printf "export DOMAIN=\"ad.example.com.,example.com.\"\n" >> /home/${USER}/www/seed.env
     	printf "# Set filesystems to use LVM\n" >> /home/${USER}/www/seed.env
       	printf "export DISK='y'\n" >> /home/${USER}/www/seed.env
 		printf "# Set volume group name\n" >> /home/${USER}/www/seed.env
@@ -486,7 +487,7 @@ if [[ ${ANS} =~ [Y|y][E|e][S|s]|[Y|y] ]];then
 		printf "# Set Home directory location\n" >> /home/${USER}/www/seed.env
 		printf "export HOME_DIR=\"/home/${USER}/www\"\n" >> /home/${USER}/www/seed.env
 		printf "# Set default DNS servers, comma seperated\n" >> /home/${USER}/www/seed.env
-		printf "export DNSservers='172.17.0.53,172.27.0.53'\n" >> /home/${USER}/www/seed.env
+		printf "export DNSservers='192.168.1.53,192.169.1.53'\n" >> /home/${USER}/www/seed.env
 		printf "# REQUIRED DEFAULT Packages for VirtualBox\n" >> /home/${USER}/www/seed.env
 		printf "export DEFAULT_PACKAGES_VB=\"resolvconf,vim,curl,wget,openssh-server,perl,build-essential,hwinfo,ifupdown,locate,net-tools\"\n" >> /home/${USER}/www/seed.env 
 		printf "# REQUIRED DEFAULT Packages for VMware\n" >> /home/${USER}/www/seed.env
