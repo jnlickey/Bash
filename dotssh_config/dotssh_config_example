@@ -1,0 +1,25 @@
+# This file is an example of how an /home/<user>/.ssh/config file can be setup
+
+HOST *
+    ServerAliveInterval 5
+
+HOST server1
+     HOSTNAME 192.16.75.2
+     user <username>
+     port 22
+     IdentityFile /home/<username>/.ssh/id_rsa
+
+#################################################################
+# Host using server1 as a jumphost
+# example from your machine: ssh server2
+# (Your machine connects to server1 as the ansible user, which
+# then passes the connection through to server2, as the ansible
+# user. However you don't see the connection to server1, it only
+# appears as though the connection went straight to server2)
+#################################################################
+HOST server2
+     Hostname 192.16.11.5
+     IdentityFile /home/<ansible_user>/ansible_private_key
+     User ansible
+     Port 22
+     ProxyCommand ssh -W %h:%p ansible@server1
